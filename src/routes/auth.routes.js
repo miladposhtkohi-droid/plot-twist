@@ -1,7 +1,7 @@
 import express from "express";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
-
+import jwt from "jsonwebtoken";
 const router = express.Router();
 
 // Register route
@@ -27,7 +27,9 @@ router.post("/register", async (req, res) => {
 
   const user = new User({  name,  email, password: hashedPassword });
   await user.save();
-  res.status(201).json({ message: "User registered successfully", user });
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+  res.status(201).json({ message: "User registered successfully", user, token });
 });
 
 router.post("/login", async (req, res) => {
@@ -50,7 +52,8 @@ router.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
-  res.status(200).json({ message: "User logged in successfully", user });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  res.status(200).json({ message: "User logged in successfully", user, token });
 });
 
 export default router;
