@@ -8,6 +8,216 @@
   },
   "item": [
     {
+      "name": "plant",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "get my plants",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMjY0MDksImV4cCI6MTc3NTEzMDAwOX0._ZdTVimx4QncljfbTGqrjlM5ZiGjgTVHN49DX00dPrI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/plants/my-plants",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "plants",
+                    "my-plants"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update my plant",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMjY5OTksImV4cCI6MTc3NTEzMDU5OX0.jUAJoh5hYKUfaGpRQzAvRGrCAyYdDXh9zc9bnxib4yg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"plantName\": \"update\",\r\n    \"description\": \"update\",\r\n    \"imageUrl\": \"update\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/plants/69ce3a48d9b6ebcd5bc6900f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "plants",
+                    "69ce3a48d9b6ebcd5bc6900f"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete a plant",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMjY5OTksImV4cCI6MTc3NTEzMDU5OX0.jUAJoh5hYKUfaGpRQzAvRGrCAyYdDXh9zc9bnxib4yg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/plants/69ce3a48d9b6ebcd5bc6900f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "plants",
+                    "69ce3a48d9b6ebcd5bc6900f"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "get all plant",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMTYzOTEsImV4cCI6MTc3NTExOTk5MX0.nWhKM9bc7ovqk3SS_OdCem-9_lmWkgayFq1B1tQ_gHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/plants",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "plants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "creat a plant",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMjI3MTksImV4cCI6MTc3NTEyNjMxOX0.6Tb5PbBRHhwui-UKanjJ1D3bZ0kkiG_MK6YzcdOBK2s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"plantName\": \"test2\",\r\n    \"description\": \"test2\",\r\n    \"imageUrl\": \"test2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/plants",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "plants"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get a plant by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/plants/69ce3a1dd9b6ebcd5bc6900c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "plants",
+                "69ce3a1dd9b6ebcd5bc6900c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "auth",
       "item": [
         {
@@ -17,7 +227,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"test\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"Admin112@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -47,7 +257,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "raw": "{\r\n    \r\n    \"email\": \"Admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -65,6 +275,329 @@
                 "api",
                 "auth",
                 "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "admin",
+          "item": [
+            {
+              "name": "get user by id",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0YzlkNjI2MGYyMTk0Y2I1MTY2ZmEiLCJpYXQiOjE3NzU1NTkyNTUsImV4cCI6MTc3NTU2Mjg1NX0.Ijruq8jmlnc0S0O-ShzZUMszNtFWKrCxIV2VVOy-baI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNiOWM3YmJkNmQ1MDFlZTVkMGM1MjkiLCJpYXQiOjE3NzQ5NTE3NTksImV4cCI6MTc3NDk1NTM1OX0.XmXRNflUdQJRroIAVwl9BsOuhNF90j6-7-KoPGeRQ1s",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:3000/api/admin/user/69cb9c2295426fd7aa138a7d",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "user",
+                    "69cb9c2295426fd7aa138a7d"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": null,
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get all user",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0YzlkNjI2MGYyMTk0Y2I1MTY2ZmEiLCJpYXQiOjE3NzU1NTkyNTUsImV4cCI6MTc3NTU2Mjg1NX0.Ijruq8jmlnc0S0O-ShzZUMszNtFWKrCxIV2VVOy-baI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/admin/users",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update user by id",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMTYzOTEsImV4cCI6MTc3NTExOTk5MX0.nWhKM9bc7ovqk3SS_OdCem-9_lmWkgayFq1B1tQ_gHA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\":\"updated name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/admin/user/69cb9c2295426fd7aa138a7d",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "user",
+                    "69cb9c2295426fd7aa138a7d"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete user by id",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0YzlkNjI2MGYyMTk0Y2I1MTY2ZmEiLCJpYXQiOjE3NzU1NTkyNTUsImV4cCI6MTc3NTU2Mjg1NX0.Ijruq8jmlnc0S0O-ShzZUMszNtFWKrCxIV2VVOy-baI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/admin/user/69cb9c2295426fd7aa138a7d",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "user",
+                    "69cb9c2295426fd7aa138a7d"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzU1NTYyMjEsImV4cCI6MTc3NTU1OTgyMX0.tWm3wVviyx7socNCHDuttmERSm0swHgSxOEqClqI1qE",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/user/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "user",
+                "me"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update my profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzU1NTYyMjEsImV4cCI6MTc3NTU1OTgyMX0.tWm3wVviyx7socNCHDuttmERSm0swHgSxOEqClqI1qE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNiOWM3YmJkNmQ1MDFlZTVkMGM1MjkiLCJpYXQiOjE3NzQ5NTE3NTksImV4cCI6MTc3NDk1NTM1OX0.XmXRNflUdQJRroIAVwl9BsOuhNF90j6-7-KoPGeRQ1s",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n            \"name\": \"update name6\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/user/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "user",
+                "me"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete my account",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzU1NTYyMjEsImV4cCI6MTc3NTU1OTgyMX0.tWm3wVviyx7socNCHDuttmERSm0swHgSxOEqClqI1qE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNiOWM3YmJkNmQ1MDFlZTVkMGM1MjkiLCJpYXQiOjE3NzQ5NTE3NTksImV4cCI6MTc3NDk1NTM1OX0.XmXRNflUdQJRroIAVwl9BsOuhNF90j6-7-KoPGeRQ1s",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n            \"name\": \"update name\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/user/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "user",
+                "me"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
               ]
             }
           },

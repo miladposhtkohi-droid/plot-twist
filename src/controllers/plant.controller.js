@@ -91,19 +91,18 @@ export const updatePlant = async (req, res) => {
 };
 // delete a plant
 export const deletePlant = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const plant = await Plant.findById(id);
-        if (!plant) {
-            return res.status(404).json({ message: "Plant not found" });
-        }
-        if (plant.ownerId.toString() !== req.userId) {
-            return res.status(403).json({ message: "Forbidden" });
-        }
-        await plant.deleteOne();
-        res.status(200).json({ message: "Plant deleted successfully" });
+  const { id } = req.params;
+  try {
+    const plant = await Plant.findById(id);
+    if (!plant) {
+      return res.status(404).json({ message: "Plant not found" });
     }
-    catch (error) {
-        res.status(500).json({ message: "Error deleting plant" });
-    }   
+    if (plant.ownerId.toString() !== req.userId) {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+    await plant.deleteOne();
+    res.status(200).json({ message: "Plant deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting plant" });
+  }
 };

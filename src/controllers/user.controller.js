@@ -1,37 +1,35 @@
-import User from "../models/User.js";
+
+import * as userServices from "../services/user.servcices.js";
 
 export const getMe = async (req, res) => {
   const userId = req.userId;
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  const user = await User.findById(userId).select("-password");
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
-  }
-  res.status(200).json({ user });
+  try {
+  const user = await userServices.getMe(userId);
+  res.status(200).json({success: true, message: "User fetched successfully", ...user });
+
+} catch (error) {
+  res.status(500).json({ message: "Error fetching user" });
+}
+
 };
 
 export const updateMe = async (req, res) => {
   //
   const { name, email } = req.body;
+  const userId = req.userId;
 
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { name, email },
-      { new: true },
-    ).select("-password");
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.status(200).json({ user });
+    const user = await userServices.updateMe(userId, { name, email });
+    res.status(200).json({ success: true, message: "User updated successfully", ...user }); 
   } catch (error) {
-    res.status(500).json({ message: "Error updating user" });
+    res.status(500).json({ message: "Error updating user" }); 
   }
 };
 
@@ -42,11 +40,8 @@ export const deleteMe = async (req, res) => {
   }
 
   try {
-    const user = await User.findByIdAndDelete(userId);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.status(200).json({ message: "User deleted" });
+    const user = await userServices.deleteMe(userId);
+    res.status(200).json({ success: true, ...user });
   } catch (error) {
     res.status(500).json({ message: "Error deleting user" });
   }
@@ -54,65 +49,61 @@ export const deleteMe = async (req, res) => {
 
 
 // get all users (admin only)
-
+// @todo
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().select("-password");
-    if (!users || users.length === 0) {
-      return res.status(404).json({ message: "No users found" });
-    }
+  const { users } = await userServices.getAllUsers();
+  res.status(200).json({success: true, message: "Users fetched successfully", users });
 
-    res.status(200).json({ users });
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching users" });
-  }
+} catch (error) {
+  res.status(500).json({ message: "Error fetching user" });
+}
 };
 
 // get user by id (admin only)
 export const getUserById = async (req, res) => {
-  try {
-    const userId = req.params.id;
-    console.log("user id from getuserbyid ", userId)
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.status(200).json({ user });
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching user" });
+  const userId = req.params.id;
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized" });
   }
+  try {
+  const user = await userServices.getMe(userId);
+  res.status(200).json({success: true, message: "User fetched successfully", ...user });
+
+} catch (error) {
+  res.status(500).json({ message: "Error fetching user" });
+}
 };
 
 
 // update user by id (admin only)
 export const updateUserById = async (req, res) => {
+  const { name, email } = req.body;
+  const userId = req.params.id;
+
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
   try {
-    const userId = req.params.id;
-    const { name, email } = req.body;
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { name, email }, 
-      { new: true },
-    ).select("-password");
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.status(200).json({ user });
+    const user = await userServices.updateMe(userId, { name, email });
+    res.status(200).json({ success: true, message: "User updated successfully", ...user }); 
   } catch (error) {
-    res.status(500).json({ message: "Error updating user" });
-  } 
+    res.status(500).json({ message: "Error updating user" }); 
+  }
 };
 // delete user by id (admin only)
 export const deleteuserById = async (req, res) => 
 {
+  const userId = req.params.id;
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
   try {
-    const userId = req.params.id;
-    const user = await User.findByIdAndDelete(userId);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.status(200).json({ message: "User deleted" });
-    } catch (error) {   
+    const user = await userServices.deleteMe(userId);
+    res.status(200).json({ success: true, ...user });
+  } catch (error) {
     res.status(500).json({ message: "Error deleting user" });
-    }
+  }
 };

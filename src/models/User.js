@@ -20,15 +20,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
-  //TODO: Add salt and hash password
-  // password: 34097uoewihjrgf90384tujfvfe0rpåtu3409tjoirgfj
- // 123456 => 123456+secretkey => hash(123456+secretkey) => 34097uoewihjrgf90384tujfvfe0rpåtu3409tjoirgfj
-  next();
-});
+
 
 const User = mongoose.model("User", userSchema);
 
