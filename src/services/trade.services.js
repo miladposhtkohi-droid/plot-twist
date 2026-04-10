@@ -173,13 +173,20 @@ export const acceptTrade = async (id , userId) => {
     error.status = 403;
     throw error;
   }
+  const plant = await Plant.findById(trade.ownerPlantId);
+  if (plant.status !== "available") {
+    const error = new Error("Owner plant is not available for trade");
+    error.status = 400;
+    throw error;
+  }
+  plant.status = "trading";
   trade.status = "accepted";
   await trade.save();
   return trade;
 };
 
 // reject a trade
-export const rejectTrade = async (tradeId) => {
+export const rejectTrade = async (tradeId , userId) => {
   const trade = await Trade.findById(tradeId);
   if (!trade) {
     const error = new Error("Trade not found");
@@ -225,7 +232,7 @@ export const cancelTrade = async (tradeId , userId) => {
 };
 
 // complete a trade
-export const completeTrade = async (tradeId) => {
+export const completeTrade = async (tradeId , userId) => {
   const trade = await Trade.findById(tradeId);
   if (!trade) {
     const error = new Error("Trade not found");
@@ -237,8 +244,31 @@ export const completeTrade = async (tradeId) => {
     error.status = 400;
     throw error;
   }
+  if (trade.ownerId.toString() !== userId || trade.requesterId.toString() !== userId  ) {
+    const error = new Error("Only the owner or requester can complete the trade");
+    error.status = 403;
+    throw error;
+  }
   trade.status = "completed";
-  trade.complationDate = new Date();
+  if(trade.ownerId.toString() === userId){
+    trade.completedAt = new Date();
+  }
+  const ownerPlant = await Plant.findById(trade.ownerPlantId);
+  const requesterPlant = await Plant.findById(trade.requesterPlantId);
+
+  ownerPlant.status = "traded";
+  ownerPlant.ownerId = trade.requesterId;
+
+  requesterPlant.status = "traded"; 
+  requesterPlant.ownerId = trade.ownerId;
+
+  await ownerPlant.save();
+  await requesterPlant.save();
+  
+
+
+
+
   await trade.save();
   return trade;
 };

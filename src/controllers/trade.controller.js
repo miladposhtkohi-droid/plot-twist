@@ -107,8 +107,9 @@ export const cancelTrade = async (req, res) => {
 // complete a trade
 export const completeTrade = async (req, res) => {
   const { id } = req.params;
+  const userId = req.userId;
   try {
-    const trade = await tradeService.completeTrade(id);
+    const trade = await tradeService.completeTrade(id , userId);
     if (!trade) {
       return res
         .status(404)
