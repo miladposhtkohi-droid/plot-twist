@@ -12,16 +12,26 @@ const router = express.Router();
 router.use(authMiddleware);
 
 router.post("/", tradeController.createTrade);
-
+// get my trades
 router.get("/my-trades",tradeController.getMyTrades);
-/* router.get("/my-trades/:id",tradeController.getMyTradeById);
+
+// get trade by id
+router.get("/my-trades/:id",tradeController.getTradeById);
+
+// accept a trade
 router.put("/my-trades/:id/accept",tradeController.acceptTrade);
+
+// reject a trade
 router.put("/my-trades/:id/reject",tradeController.rejectTrade);
+
+// cancel a trade
 router.put("/my-trades/:id/cancel",tradeController.cancelTrade);
-router.put("/my-trades/:id/complete",tradeController.completeTrade); */
-/* router.get("/:id", getTradeById);
-router.put("/:id", updateTrade);
-router.delete("/:id", deleteTrade); */
+
+// complete a trade
+router.put("/my-trades/:id/complete",tradeController.completeTrade); 
+// router.get("/:id", tradeController.getTradeById);
+// router.put("/:id", tradeController.updateTrade);
+// router.delete("/:id", tradeController.deleteTrade); 
 
 
 export default router;  
