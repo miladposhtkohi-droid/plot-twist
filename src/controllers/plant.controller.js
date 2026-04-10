@@ -28,8 +28,9 @@ export const getPlantById = async (req, res) => {
 // create plant
 export const createPlant = async (req, res) => {
   console.log(req.userId);
-  const { plantName, description, imageUrl } = req.body;
-  if (!plantName || !description || !imageUrl) {
+  const { plantName, description, imageUrl , status } = req.body;
+
+  if (!plantName || !description || !imageUrl || !status) {
     return res.status(400).json({ message: "All fields are required" });
   }
   try {
@@ -37,6 +38,7 @@ export const createPlant = async (req, res) => {
       plantName,
       description,
       imageUrl,
+      status,
       ownerId: req.userId,
     });
     res.status(201).json({ message: "Plant created successfully", plant });
@@ -61,13 +63,13 @@ export const getMyPlants = async (req, res) => {
 // update plant
 export const updatePlant = async (req, res) => {
   const { id } = req.params;
-  const { plantName, description, imageUrl } = req.body;
-  if (!plantName || !description || !imageUrl) {
+  const { plantName, description, imageUrl , status} = req.body;
+  if (!plantName || !description || !imageUrl || status) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
   try {
-    const plant = await plantService.updatePlant(id, { plantName, description, imageUrl }, req.userId);
+    const plant = await plantService.updatePlant(id, { plantName, description, imageUrl , status}, req.userId);
     res.status(200).json({ message: "Plant updated successfully", plant });
   } catch (error) {
     res.status(500).json({ message: "Error updating plant" });

@@ -4,19 +4,30 @@ import * as tradeController from '../controllers/trade.controller.js';
 const router = express.Router();
 
 
-// get all trades (admin route)
-// @todo protect this route to be only accessible by admin users
-/* router.get("/", getAllTrades);
- */
 // protected routes
 router.use(authMiddleware);
 
+
+// create new trades (skicka request)
 router.post("/", tradeController.createTrade);
-// get my trades
+// get my requests (trades where I am the requester)
+router.get("/my-requests",tradeController.getMyRequests);
+
+// get my trades (trades where I am the owner)
 router.get("/my-trades",tradeController.getMyTrades);
 
-// get trade by id
-router.get("/my-trades/:id",tradeController.getTradeById);
+
+
+
+
+
+
+
+
+
+
+
+
 
 // accept a trade
 router.put("/my-trades/:id/accept",tradeController.acceptTrade);
@@ -29,9 +40,14 @@ router.put("/my-trades/:id/cancel",tradeController.cancelTrade);
 
 // complete a trade
 router.put("/my-trades/:id/complete",tradeController.completeTrade); 
-// router.get("/:id", tradeController.getTradeById);
-// router.put("/:id", tradeController.updateTrade);
-// router.delete("/:id", tradeController.deleteTrade); 
+
+
+
+
+
+
+
+
 
 
 export default router;  

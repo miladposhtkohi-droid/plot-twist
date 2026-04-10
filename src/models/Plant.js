@@ -18,8 +18,12 @@ const plantSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  status: {
+    type: String,
+    enum: ["available", "trading", "traded", "notAvailable"],
+    default: "notAvailable",
+  },
 });
-
 
 const Plant = mongoose.model("Plant", plantSchema);
 

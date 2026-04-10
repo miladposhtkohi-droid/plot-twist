@@ -40,6 +40,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/plants", plantRoutes);
+
 app.use("/api/trades", tradeRoutes);
 
 

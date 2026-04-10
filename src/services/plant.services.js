@@ -17,11 +17,12 @@ export const getPlantById = async (id) => {
 
 
 // create plant function
-export const createPlant = async ({ plantName, description, imageUrl, ownerId }) => {
+export const createPlant = async ({ plantName, description, imageUrl, ownerId , status}) => {
     const plant = new Plant({
         plantName,
         description,
         imageUrl,
+        status,
         ownerId,
     });
     await plant.save();
@@ -44,7 +45,7 @@ export const getMyPlants = async (ownerId) => {
 
 
 //update plant function
-export const updatePlant = async (id, { plantName, description, imageUrl }, ownerId) => {
+export const updatePlant = async (id, { plantName, description, imageUrl , status }, ownerId) => {
     const plant = await Plant.find
 ById(id);
     if (!plant) {
@@ -60,6 +61,7 @@ ById(id);
     plant.plantName = plantName || plant.plantName;
     plant.description = description || plant.description;
     plant.imageUrl = imageUrl || plant.imageUrl;
+    plant.status = status || plant.status
     await plant.save();
     return plant;
 }

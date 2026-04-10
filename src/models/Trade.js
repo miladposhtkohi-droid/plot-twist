@@ -1,4 +1,3 @@
-import e from "express";
 import mongoose from "mongoose";
 
 const tradeSchema = new mongoose.Schema(
@@ -37,7 +36,7 @@ const tradeSchema = new mongoose.Schema(
       type: String,
       default: null
     },
-    complationDate: {
+    completedAt: {
       type: Date,
       default : null
     },
