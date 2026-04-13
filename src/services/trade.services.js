@@ -85,20 +85,24 @@ export const createTrade = async ({
 
 // get user's requests trades
 export const getMyRequests = async (userId, plantId) => {
-  const trades = await Trade.find({ requesterId: userId }).populate({
-    path: "ownerPlantId",
-    select: "plantName description imageUrl status",
-  }).populate({
-    path: "requesterPlantId",
-    select: "plantName description imageUrl status",
-  }).populate({
-    path: "requesterId",
-    select: "name",
-  }).populate({
-    path: "ownerId",
-    model: 'User',
-    select: "name",
-  });
+  const trades = await Trade.find({ requesterId: userId })
+    .populate({
+      path: "ownerPlantId",
+      select: "plantName description imageUrl status",
+    })
+    .populate({
+      path: "requesterPlantId",
+      select: "plantName description imageUrl status",
+    })
+    .populate({
+      path: "requesterId",
+      select: "name",
+    })
+    .populate({
+      path: "ownerId",
+      model: "User",
+      select: "name",
+    });
   if (!trades || trades.length === 0) {
     const error = new Error("No trades found");
     error.status = 404;
@@ -109,20 +113,24 @@ export const getMyRequests = async (userId, plantId) => {
 
 // get user's owned trades
 export const getMyTrades = async (userId) => {
-  const trades = await Trade.find({ ownerId: userId }).populate({
-        path: "ownerPlantId",
-    select: "plantName description imageUrl status",
-  }).populate({
-    path: "requesterPlantId",
-    select: "plantName description imageUrl status",
-  }).populate({
-    path: "requesterId",
-    select: "name",
-  }).populate({
-    path: "ownerId",
-    model: 'User',
-    select: "name",
-  });
+  const trades = await Trade.find({ ownerId: userId })
+    .populate({
+      path: "ownerPlantId",
+      select: "plantName description imageUrl status",
+    })
+    .populate({
+      path: "requesterPlantId",
+      select: "plantName description imageUrl status",
+    })
+    .populate({
+      path: "requesterId",
+      select: "name",
+    })
+    .populate({
+      path: "ownerId",
+      model: "User",
+      select: "name",
+    });
   if (!trades || trades.length === 0) {
     const error = new Error("No trades found");
     error.status = 404;
@@ -130,16 +138,6 @@ export const getMyTrades = async (userId) => {
   }
   return trades;
 };
-
-
-
-
-
-
-
-
-
-
 
 // get ownder's trades
 export const getTradeById = async (plantId, userId) => {
@@ -156,7 +154,7 @@ export const getTradeById = async (plantId, userId) => {
 };
 
 // accept a trade
-export const acceptTrade = async (id , userId) => {
+export const acceptTrade = async (id, userId) => {
   const trade = await Trade.findById(id);
   if (!trade) {
     const error = new Error("Trade not found");
@@ -186,7 +184,7 @@ export const acceptTrade = async (id , userId) => {
 };
 
 // reject a trade
-export const rejectTrade = async (tradeId , userId) => {
+export const rejectTrade = async (tradeId, userId) => {
   const trade = await Trade.findById(tradeId);
   if (!trade) {
     const error = new Error("Trade not found");
@@ -209,7 +207,7 @@ export const rejectTrade = async (tradeId , userId) => {
 };
 
 // cancel a trade
-export const cancelTrade = async (tradeId , userId) => {
+export const cancelTrade = async (tradeId, userId) => {
   const trade = await Trade.findById(tradeId);
   if (!trade) {
     const error = new Error("Trade not found");
@@ -232,7 +230,7 @@ export const cancelTrade = async (tradeId , userId) => {
 };
 
 // complete a trade
-export const completeTrade = async (tradeId , userId) => {
+export const completeTrade = async (tradeId, userId) => {
   const trade = await Trade.findById(tradeId);
   if (!trade) {
     const error = new Error("Trade not found");
@@ -244,13 +242,19 @@ export const completeTrade = async (tradeId , userId) => {
     error.status = 400;
     throw error;
   }
-  if (trade.ownerId.toString() !== userId || trade.requesterId.toString() !== userId  ) {
-    const error = new Error("Only the owner or requester can complete the trade");
-    error.status = 403;
-    throw error;
+  if (trade.ownerId.toString() !== userId) {
+    if (trade.requesterId.toString() !== userId) {
+      console.log(trade.ownerId, trade.requesterId.toString(), "xxx", userId);
+      const error = new Error(
+        "Only the owner or requester can complete the trade",
+      );
+      error.status = 403;
+      throw error;
+    }
   }
+
   trade.status = "completed";
-  if(trade.ownerId.toString() === userId){
+  if (trade.ownerId.toString() === userId) {
     trade.completedAt = new Date();
   }
   const ownerPlant = await Plant.findById(trade.ownerPlantId);
@@ -259,15 +263,11 @@ export const completeTrade = async (tradeId , userId) => {
   ownerPlant.status = "traded";
   ownerPlant.ownerId = trade.requesterId;
 
-  requesterPlant.status = "traded"; 
+  requesterPlant.status = "traded";
   requesterPlant.ownerId = trade.ownerId;
 
   await ownerPlant.save();
   await requesterPlant.save();
-  
-
-
-
 
   await trade.save();
   return trade;

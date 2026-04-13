@@ -34,7 +34,7 @@ export const login = async (req, res) => {
   
   try {
     const user = await authServeces.login({ email, password });
-    res.status(201).json({ success: true, ...user });
+    res.status(200).json({ success: true, ...user });
     
   } catch (error) {
     console.log(error)

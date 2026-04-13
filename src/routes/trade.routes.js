@@ -19,16 +19,6 @@ router.get("/my-trades",tradeController.getMyTrades);
 
 
 
-
-
-
-
-
-
-
-
-
-
 // accept a trade
 router.put("/my-trades/:id/accept",tradeController.acceptTrade);
 
@@ -40,12 +30,6 @@ router.put("/my-trades/:id/cancel",tradeController.cancelTrade);
 
 // complete a trade
 router.put("/my-trades/:id/complete",tradeController.completeTrade); 
-
-
-
-
-
-
 
 
 

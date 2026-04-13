@@ -21,7 +21,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMjY0MDksImV4cCI6MTc3NTEzMDAwOX0._ZdTVimx4QncljfbTGqrjlM5ZiGjgTVHN49DX00dPrI",
+                      "value": "{{token}}",
                       "type": "string"
                     }
                   ]
@@ -29,7 +29,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/plants/my-plants",
+                  "raw": "http://localhost:3000/api/plants/my-plants",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -69,7 +69,7 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/plants/69ce3a48d9b6ebcd5bc6900f",
+                  "raw": "http://localhost:3000/api/plants/69ce3a48d9b6ebcd5bc6900f",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -100,7 +100,7 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/plants/69ce3a48d9b6ebcd5bc6900f",
+                  "raw": "http://localhost:3000/api/plants/69ce3a48d9b6ebcd5bc6900f",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -134,11 +134,9 @@
             "header": [],
             "url": {
               "raw": "{{url}}/api/plants",
-              "protocol": "http",
               "host": [
-                "localhost"
+                "{{url}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "plants"
@@ -155,7 +153,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWNkMDQ1MjM0NDZiNTJkYjU2YmZiZTkiLCJpYXQiOjE3NzUxMjI3MTksImV4cCI6MTc3NTEyNjMxOX0.6Tb5PbBRHhwui-UKanjJ1D3bZ0kkiG_MK6YzcdOBK2s",
+                  "value": "{{token}}",
                   "type": "string"
                 }
               ]
@@ -164,7 +162,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"plantName\": \"test2\",\r\n    \"description\": \"test2\",\r\n    \"imageUrl\": \"test2\"\r\n}",
+              "raw": "{\r\n    \"plantName\": \"test2\",\r\n    \"description\": \"test2\",\r\n    \"imageUrl\": \"test2\",\r\n    \"status\": \"available\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -173,11 +171,9 @@
             },
             "url": {
               "raw": "{{url}}/api/plants",
-              "protocol": "http",
               "host": [
-                "localhost"
+                "{{url}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "plants"
@@ -193,11 +189,9 @@
             "header": [],
             "url": {
               "raw": "{{url}}/api/plants/69ce3a1dd9b6ebcd5bc6900c",
-              "protocol": "http",
               "host": [
-                "localhost"
+                "{{url}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "plants",
@@ -326,7 +320,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/admin/user/69cb9c2295426fd7aa138a7d",
+                  "raw": "http://localhost:3000/api/admin/user/69cb9c2295426fd7aa138a7d",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -366,7 +360,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/users",
+                  "raw": "http://localhost:3000/api/admin/users",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -406,7 +400,7 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/user/69cb9c2295426fd7aa138a7d",
+                  "raw": "http://localhost:3000/api/admin/user/69cb9c2295426fd7aa138a7d",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -438,7 +432,7 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/user/69cb9c2295426fd7aa138a7d",
+                  "raw": "http://localhost:3000/api/admin/user/69cb9c2295426fd7aa138a7d",
                   "protocol": "http",
                   "host": [
                     "localhost"
@@ -473,7 +467,7 @@
               }
             ],
             "url": {
-              "raw": "{{url}}/api/user/me",
+              "raw": "http://localhost:3000/api/user/me",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -532,7 +526,7 @@
               }
             },
             "url": {
-              "raw": "{{url}}/api/user/me",
+              "raw": "http://localhost:3000/api/user/me",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -591,7 +585,7 @@
               }
             },
             "url": {
-              "raw": "{{url}}/api/user/me",
+              "raw": "http://localhost:3000/api/user/me",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -622,15 +616,23 @@
         {
           "name": "get all request",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
               "raw": "{{url}}/api/trades/my-trades",
-              "protocol": "http",
               "host": [
-                "localhost"
+                "{{url}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "trades",
@@ -648,7 +650,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ0YzlkNjI2MGYyMTk0Y2I1MTY2ZmEiLCJpYXQiOjE3NzU2Mzc3NDIsImV4cCI6MTc3NTY0MTM0Mn0.KspOuT9IbpVxQ3E9EMv8JgW9jyEFxaiIB168AkJ7ym8",
+                  "value": "{{token}}",
                   "type": "string"
                 }
               ]
@@ -657,7 +659,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"ownerPlantId\": \"\",\r\n    \"requesterPlantId\": \"\"\r\n}",
+              "raw": "{\r\n    \"ownerPlantId\": \"69d924f46073d67dd1c58bf5\",\r\n    \"requesterPlantId\": \"69d9193cea66a7011f054fa6\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -666,14 +668,194 @@
             },
             "url": {
               "raw": "{{url}}/api/trades",
-              "protocol": "http",
               "host": [
-                "localhost"
+                "{{url}}"
               ],
-              "port": "3000",
               "path": [
                 "api",
                 "trades"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my requests",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/trades/my-requests/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "trades",
+                "my-requests",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my trades",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/trades/my-requests/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "trades",
+                "my-requests",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "accepted trade",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/trades/my-trades/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "trades",
+                "my-trades",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reject a  trade",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/trades/my-trades/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "trades",
+                "my-trades",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cancel a trade",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/trades/my-trades/69d9462db8a11ec5f4c804b8/cancel",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "trades",
+                "my-trades",
+                "69d9462db8a11ec5f4c804b8",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "complated",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/trades/my-trades/69d9462db8a11ec5f4c804b8/cancel",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "trades",
+                "my-trades",
+                "69d9462db8a11ec5f4c804b8",
+                "cancel"
               ]
             }
           },
@@ -713,6 +895,10 @@
     },
     {
       "key": "token",
+      "value": ""
+    },
+    {
+      "key": "newPlantId",
       "value": ""
     }
   ]

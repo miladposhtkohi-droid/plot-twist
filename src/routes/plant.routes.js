@@ -9,7 +9,8 @@ const router = express.Router();
 // get all plants 
 router.get("/", getAllPlants);
 
-//  get my plant
+// private routes
+//  get my plant 
 router.get("/my-plants",authMiddleware, getMyPlants);
 //  update plant 
 router.put("/:id", authMiddleware, updatePlant);

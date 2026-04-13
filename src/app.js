@@ -2,16 +2,11 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-
-import authRoutes from "./routes/auth.routes.js";
-import userRoutes from "./routes/user.routes.js";
-import adminRoutes from "./routes/admin.routes.js";
-import plantRoutes from "./routes/plant.routes.js";
-import tradeRoutes from "./routes/trade.routes.js";
+import routes from "./routes/index.js";
 const app = express();
-
 let isConnected = false;
 
+// Database connection
 async function connectDB() {
   if (isConnected) return;
   await mongoose.connect(process.env.MONGODB_URI);
@@ -31,19 +26,6 @@ app.use(cors("*"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.get("/", (req, res) => {
-  res.json({ message: "Webbshop API test", stack: "MEN (MongoDB, Express, Node.js)" });
-});
-
-app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/plants", plantRoutes);
-
-app.use("/api/trades", tradeRoutes);
-
-
-
-
+// Routes index
+app.use("/api", routes);
 export default app;

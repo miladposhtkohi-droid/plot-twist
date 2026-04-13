@@ -1,9 +1,9 @@
 import express from "express";
+const router = express.Router();
 
 import { authMiddleware , adminMiddleware } from "../middleware/auth.middleware.js";   
 import { getUserById , getAllUsers , updateUserById , deleteuserById} from "../controllers/user.controller.js";
  
-const router = express.Router();
 
 
 // som admin 
