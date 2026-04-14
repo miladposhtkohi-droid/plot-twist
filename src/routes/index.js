@@ -18,16 +18,4 @@ router.use("/admin", adminRoutes);
 router.use("/plants", plantRoutes);
 router.use("/trades", tradeRoutes);
 
-// 404 handler
-router.use((req, res , next) => {
-  const error = new Error("Route Not Found");
-  error.status = 404;
-  next(error);
-});
-// Error handling middleware
-router.use((err, req, res, next) => {
-  console.error(err.stack);  
-  res.status(500).json({ error: err.message || "Internal Server Error" });
-});
-
 export default router;

@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import routes from "./routes/index.js";
+import { errorHandler , notFound } from "./middleware/error.middleware.js";
 const app = express();
 let isConnected = false;
 
@@ -28,4 +29,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes index
 app.use("/api", routes);
+
+// Error handling middleware
+app.use(notFound);
+app.use(errorHandler);
+
 export default app;
