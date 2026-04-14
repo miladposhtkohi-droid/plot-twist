@@ -20,7 +20,7 @@ export const createTrade = async (req, res) => {
 };
 
 // private route to get my requests
-export const getMyRequests = async (req, res) => {
+export const getMyRequests = async (req, res , next) => {
   try {
     const userId = req.userId;
     const trades = await tradeService.getMyRequests(userId);
@@ -40,7 +40,7 @@ export const getMyTrades = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Trades fetched successfully", trades });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    next(error);
   }
 };
 

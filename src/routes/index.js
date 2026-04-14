@@ -8,9 +8,7 @@ import adminRoutes from "./admin.routes.js";
 import plantRoutes from "./plant.routes.js";
 import tradeRoutes from "./trade.routes.js";
 
-router.get("/", (req, res) => {
-  res.json({ message: "Webbshop API test", stack: "MEN (MongoDB, Express, Node.js)" });
-});
+
 
 router.use("/auth", authRoutes);
 router.use("/user", userRoutes);

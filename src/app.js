@@ -27,6 +27,12 @@ app.use(cors("*"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Test route
+app.get("/", (req, res) => {
+  res.json({ message: "Webbshop API test", stack: "MEN (MongoDB, Express, Node.js)" });
+});
+
+
 // Routes index
 app.use("/api", routes);
 
