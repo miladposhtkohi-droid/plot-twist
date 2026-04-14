@@ -2,6 +2,8 @@ import express from "express";
 import { getAllPlants } from "../controllers/plant.controller.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
 import { createPlant, getPlantById , getMyPlants, updatePlant , deletePlant} from "../controllers/plant.controller.js";
+import { handleValidation } from "../middleware/handleValidation.middleware.js";
+import { createPlantValidation, updatePlantValidation } from "../schemas/plant.schemas.js";
 const router = express.Router();
 
 
@@ -13,7 +15,7 @@ router.get("/", getAllPlants);
 //  get my plant 
 router.get("/my-plants",authMiddleware, getMyPlants);
 //  update plant 
-router.put("/:id", authMiddleware, updatePlant);
+router.put("/:id", authMiddleware, updatePlantValidation, handleValidation, updatePlant);
 // delete a plant 
 router.delete("/:id", authMiddleware, deletePlant );
 
@@ -23,7 +25,7 @@ router.get("/:id", getPlantById )
 
 // private routes ( you have to be logged in to access these routes )
 // create plant
-router.post("/",authMiddleware, createPlant);
+router.post("/", authMiddleware, createPlantValidation, handleValidation, createPlant );
 
 
 

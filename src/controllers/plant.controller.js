@@ -30,9 +30,7 @@ export const createPlant = async (req, res) => {
   console.log(req.userId);
   const { plantName, description, imageUrl , status } = req.body;
 
-  if (!plantName || !description || !imageUrl || !status) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
+
   try {
     const plant = await plantService.createPlant({
       plantName,
@@ -64,9 +62,7 @@ export const getMyPlants = async (req, res) => {
 export const updatePlant = async (req, res) => {
   const { id } = req.params;
   const { plantName, description, imageUrl , status} = req.body;
-  if (!plantName || !description || !imageUrl || status) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
+ 
 
   try {
     const plant = await plantService.updatePlant(id, { plantName, description, imageUrl , status}, req.userId);
