@@ -28,7 +28,7 @@ export const getPlantById = async (req, res) => {
 // create plant
 export const createPlant = async (req, res) => {
   console.log(req.userId);
-  const { plantName, description, imageUrl , status } = req.body;
+  const { plantName, description, imageUrl , status , location} = req.body;
 
 
   try {
@@ -38,6 +38,10 @@ export const createPlant = async (req, res) => {
       imageUrl,
       status,
       ownerId: req.userId,
+      location: {
+        type: "Point",
+        coordinates: location.coordinates
+      }
     });
     res.status(201).json({ message: "Plant created successfully", plant });
   } catch (error) {
@@ -61,11 +65,11 @@ export const getMyPlants = async (req, res) => {
 // update plant
 export const updatePlant = async (req, res) => {
   const { id } = req.params;
-  const { plantName, description, imageUrl , status} = req.body;
+  const { plantName, description, imageUrl , status, location} = req.body;
  
 
   try {
-    const plant = await plantService.updatePlant(id, { plantName, description, imageUrl , status}, req.userId);
+    const plant = await plantService.updatePlant(id, { plantName, description, imageUrl , status, location}, req.userId);
     res.status(200).json({ message: "Plant updated successfully", plant });
   } catch (error) {
     res.status(500).json({ message: "Error updating plant" });

@@ -23,6 +23,17 @@ const plantSchema = new mongoose.Schema({
     enum: ["available", "trading", "traded", "notAvailable"],
     default: "notAvailable",
   },
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+  },
 });
 
 const Plant = mongoose.model("Plant", plantSchema);
