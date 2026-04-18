@@ -5,6 +5,11 @@ import Plant from "../models/Plant.js";
 export const getAllPlants = async () => {
 
         const plants = await Plant.find();
+        if (plants.length === 0 ) {
+            const error = new Error("No plants found");
+            error.statusCode = 404;
+            throw error;
+        }
         return plants;
 
 };
@@ -12,6 +17,11 @@ export const getAllPlants = async () => {
 // get plant by id function
 export const getPlantById = async (id) => {
     const plant = await Plant.findById(id);
+    if (!plant) {
+        const error = new Error("Plant not found");
+        error.statusCode = 404;
+        throw error;
+    }
     return plant;
 };
 
