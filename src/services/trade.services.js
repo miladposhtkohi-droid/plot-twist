@@ -270,5 +270,20 @@ export const completeTrade = async (tradeId, userId) => {
   await requesterPlant.save();
 
   await trade.save();
+
+
+  // delete all other pending trades that involve either of the traded plants
+  await Trade.deleteMany({
+    $or: [
+      { ownerPlantId: trade.ownerPlantId, requesterPlantId: trade.requesterPlantId },
+
+      { ownerPlantId: trade.ownerPlantId },
+
+      { requesterPlantId: trade.ownerPlantId },
+      { ownerPlantId: trade.requesterPlantId },
+      { requesterPlantId: trade.requesterPlantId },
+    ],
+    status: "pending",
+  });
   return trade;
 };
