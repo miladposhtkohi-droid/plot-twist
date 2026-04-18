@@ -4,7 +4,7 @@ import Plant from "../models/Plant.js";
 //get all plants function
 export const getAllPlants = async () => {
 
-        const plants = await Plant.find();
+        const plants = await Plant.find({ status: "available" });
         if (plants.length === 0 ) {
             const error = new Error("No plants found");
             error.statusCode = 404;
