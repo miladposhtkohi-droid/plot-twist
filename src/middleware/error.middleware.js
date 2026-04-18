@@ -8,7 +8,7 @@ export const notFound = (req, res, next) => {
 // Centralized error handler
 export const errorHandler = (err, req, res, next) => {
   // Use the status code from the error if it exists
-  let statusCode = err.statusCode || 500;
+  let statusCode = err.statusCode || err.status || 500;
 
   let message = err.message || "Internal Server Error";
   // Unauthorized errors (JWT or auth middleware)
